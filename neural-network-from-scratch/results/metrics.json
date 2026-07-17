@@ -1,0 +1,14 @@
+{
+  "moons": {
+    "baseline_acc": 0.872,
+    "test_acc": 0.996,
+    "train_acc": 0.9973,
+    "grad_check_max_rel_err": "3.36e-08"
+  },
+  "spirals": {
+    "baseline_acc": 0.62,
+    "test_acc": 1.0,
+    "train_acc": 1.0,
+    "grad_check_max_rel_err": "6.10e-08"
+  }
+}
