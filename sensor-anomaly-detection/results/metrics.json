@@ -1,0 +1,24 @@
+{
+  "detectors": {
+    "mahalanobis": {
+      "auc": 0.921,
+      "threshold_p99": 3.7486266002013666,
+      "detection_rate": 0.7733,
+      "false_alarm_rate": 0.0467
+    },
+    "pca_reconstruction": {
+      "auc": 0.976,
+      "threshold_p99": 1.835717597455866,
+      "detection_rate": 0.88,
+      "false_alarm_rate": 0.0067
+    },
+    "knn_novelty": {
+      "auc": 0.9406,
+      "threshold_p99": 2.852993326597191,
+      "detection_rate": 0.8667,
+      "false_alarm_rate": 0.1
+    }
+  },
+  "best": "pca_reconstruction",
+  "n_features": 14
+}

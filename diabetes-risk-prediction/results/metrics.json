@@ -1,0 +1,65 @@
+{
+  "data_audit": {
+    "Glucose": {
+      "zeros_as_missing": 5,
+      "pct": 0.7
+    },
+    "BloodPressure": {
+      "zeros_as_missing": 35,
+      "pct": 4.6
+    },
+    "SkinThickness": {
+      "zeros_as_missing": 227,
+      "pct": 29.6
+    },
+    "Insulin": {
+      "zeros_as_missing": 374,
+      "pct": 48.7
+    },
+    "BMI": {
+      "zeros_as_missing": 11,
+      "pct": 1.4
+    }
+  },
+  "cv": {
+    "logistic_regression": {
+      "cv_auc_mean": 0.8412790697674419,
+      "cv_auc_std": 0.034518925919266356,
+      "cv_f1_mean": 0.6141082823254334
+    },
+    "random_forest": {
+      "cv_auc_mean": 0.8353931339977851,
+      "cv_auc_std": 0.02935233312244959,
+      "cv_f1_mean": 0.6138596960739117
+    }
+  },
+  "holdout": {
+    "logistic_regression": {
+      "accuracy": 0.7727272727272727,
+      "precision": 0.7435897435897436,
+      "recall": 0.5370370370370371,
+      "f1": 0.6236559139784946,
+      "confusion": {
+        "tp": 29,
+        "fp": 10,
+        "fn": 25,
+        "tn": 90
+      },
+      "auc": 0.8361111111111111
+    },
+    "random_forest": {
+      "accuracy": 0.7467532467532467,
+      "precision": 0.6923076923076923,
+      "recall": 0.5,
+      "f1": 0.5806451612903226,
+      "confusion": {
+        "tp": 27,
+        "fp": 12,
+        "fn": 27,
+        "tn": 88
+      },
+      "auc": 0.8268518518518518
+    }
+  },
+  "best_model": "logistic_regression"
+}
