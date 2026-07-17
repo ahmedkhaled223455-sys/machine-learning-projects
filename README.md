@@ -19,6 +19,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Fuel efficiency regression](fuel-efficiency-regression/) | Regression | Auto MPG (398 cars, real) | 10-fold CV R² **0.817**, RMSE 3.27 vs 7.79 baseline |
 | [Neural network from scratch](neural-network-from-scratch/) | Nonlinear classification | Two moons / two spirals (synthetic) | Spirals **100%** test acc vs 62% linear baseline; gradient check 6e-8 |
 | [Customer segmentation](customer-segmentation/) | Clustering | Mall Customers (200 customers, real) | k=6 segments, silhouette 0.427, actionable profiles |
+| [Student outcomes analysis](student-outcomes-analysis/) | SQL + causal-flavored efficacy analysis | Students Performance (1,000 students) | Test-prep effect +5.5 to +10.1 points (permutation p<0.001, bootstrap CIs), SQL pipeline, from-scratch gradient boosting |
 
 ## Design principles
 

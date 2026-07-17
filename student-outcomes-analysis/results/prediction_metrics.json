@@ -1,0 +1,72 @@
+{
+  "cv": {
+    "demographics_only": {
+      "baseline_mean": {
+        "rmse": 15.17,
+        "mae": 12.032,
+        "r2": -0.007
+      },
+      "ridge": {
+        "rmse": 13.231,
+        "mae": 10.709,
+        "r2": 0.234
+      },
+      "gradient_boosting": {
+        "rmse": 13.783,
+        "mae": 11.14,
+        "r2": 0.168
+      }
+    },
+    "with_other_scores": {
+      "baseline_mean": {
+        "rmse": 15.17,
+        "mae": 12.032,
+        "r2": -0.007
+      },
+      "ridge": {
+        "rmse": 5.414,
+        "mae": 4.32,
+        "r2": 0.871
+      },
+      "gradient_boosting": {
+        "rmse": 5.728,
+        "mae": 4.568,
+        "r2": 0.856
+      }
+    }
+  },
+  "top_importance": [
+    {
+      "feature": "lunch_standard",
+      "rmse_increase": 1.73
+    },
+    {
+      "feature": "race_ethnicity_group E",
+      "rmse_increase": 0.531
+    },
+    {
+      "feature": "test_prep_none",
+      "rmse_increase": 0.517
+    },
+    {
+      "feature": "gender_male",
+      "rmse_increase": 0.428
+    },
+    {
+      "feature": "parental_education_master's degree",
+      "rmse_increase": 0.096
+    },
+    {
+      "feature": "parental_education_high school",
+      "rmse_increase": 0.094
+    },
+    {
+      "feature": "parental_education_some high school",
+      "rmse_increase": 0.056
+    },
+    {
+      "feature": "race_ethnicity_group D",
+      "rmse_increase": 0.052
+    }
+  ]
+}

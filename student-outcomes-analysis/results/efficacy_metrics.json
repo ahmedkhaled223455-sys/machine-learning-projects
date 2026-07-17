@@ -1,0 +1,58 @@
+{
+  "naive": {
+    "math_score": {
+      "diff": 5.62,
+      "cohens_d": 0.376,
+      "perm_p": 0.0001
+    },
+    "reading_score": {
+      "diff": 7.36,
+      "cohens_d": 0.519,
+      "perm_p": 0.0001
+    },
+    "writing_score": {
+      "diff": 9.91,
+      "cohens_d": 0.687,
+      "perm_p": 0.0001
+    }
+  },
+  "balance_check": {
+    "lunch": {
+      "free/reduced": 0.369,
+      "standard": 0.352
+    },
+    "parental_education": {
+      "associate's degree": 0.369,
+      "bachelor's degree": 0.39,
+      "high school": 0.286,
+      "master's degree": 0.339,
+      "some college": 0.341,
+      "some high school": 0.43
+    }
+  },
+  "adjusted": {
+    "math_score": {
+      "adj_effect": 5.49,
+      "ci95": [
+        3.85,
+        7.12
+      ]
+    },
+    "reading_score": {
+      "adj_effect": 7.36,
+      "ci95": [
+        5.79,
+        8.97
+      ]
+    },
+    "writing_score": {
+      "adj_effect": 10.06,
+      "ci95": [
+        8.54,
+        11.57
+      ]
+    }
+  },
+  "n_students": 1000,
+  "prep_completion_rate": 0.358
+}
