@@ -1,0 +1,17 @@
+{
+  "val_perplexity": {
+    "ngram_1": 27.62,
+    "ngram_2": 12.01,
+    "ngram_3": 8.17,
+    "ngram_4": 7.91,
+    "neural_lm": 7.56
+  },
+  "corpus_chars": 200000,
+  "vocab_size": 62,
+  "neural_config": {
+    "context": 12,
+    "emb_dim": 24,
+    "hidden": 128,
+    "epochs": 10
+  }
+}

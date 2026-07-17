@@ -1,0 +1,48 @@
+=== neural LM | temperature 0.7 ===
+        The madardions Volsce: geen thou armingented in the as and ame ame of armitious trues their appraish too, ardick on the tame mother affill for hear me the
+The look it wnlath honder them and good they arrive as the be of thould are be ment of that is is they arm! We the man much your groon.
+
+SICINIUS:
+St
+
+=== neural LM | temperature 1.0 ===
+        The madarnes. Tan new! Tell metter, and my angllived them agee,
+Necimees anouted your good uport
+Uthave ment met me take;
+That, all be him flowk ouffoll tefave umole it herminy arsiving all ever me thath behelived he inctius.
+
+AUFIDIUS:
+The thunt mother? Iweall the tell al theeelouturndent so mame o'sch
+
+=== neural LM | temperature 1.3 ===
+        The mad; the voat serve;
+And gwot the, amough quetch that eaise
+Of me?
+We todse? you, goisen tovaryagured to nevarr tempt od greakil, incightes let mu,t take from Romese exridy Tomest that almosgen yo trem tempucer i' the tose
+Atakelateis haves us this peay.
+
+VIRGILIA:
+MFI tid, whett presicor',
+Ohe aurn
+
+=== neural LM | temperature 0.8, top_k 12 ===
+        The madare they
+The pool breaks; he bingent meep the to the for the blaught to better it thou tratur: the pray! 'Tingain.
+O, aur busideath grath to do the banish the full the warth. Which in the gentlant menceave the mainius, I the people
+The way! they seave it
+The papan, and thou to the inged be factio
+
+=== 4-gram | temperature 1.0 ===
+The peE:Volscqt
+o!d the Q:
+Sigzwith and mysZOLANUS:
+AwkET, and I cDeThat Why,unesywSenatorit,Rop txt you, to mer that
+lVo;m here exa:
+OWith thy lovUS:
+Who cAnd way heave extchzeYoukwound spchile leWor
+myYeCing,u in hKi.
+ILquk;
+'rePasJoZIUS:
+Thy wn ther they her strenNIUS:
+
+gr?Qmy,KxwhipGod'oaBe emYoltfs
