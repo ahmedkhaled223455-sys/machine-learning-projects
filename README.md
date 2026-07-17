@@ -18,9 +18,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Sensor anomaly detection](sensor-anomaly-detection/) | Unsupervised fault detection | Simulated bearing vibration (physics-based generator) | AUC **0.976**, 88% detection at 0.7% false alarms |
 | [Fuel efficiency regression](fuel-efficiency-regression/) | Regression | Auto MPG (398 cars, real) | 10-fold CV R² **0.817**, RMSE 3.27 vs 7.79 baseline |
 | [Neural network from scratch](neural-network-from-scratch/) | Nonlinear classification | Two moons / two spirals (synthetic) | Spirals **100%** test acc vs 62% linear baseline; gradient check 6e-8 |
-
-One more project (customer segmentation) is in progress and will be
-added here once finished.
+| [Customer segmentation](customer-segmentation/) | Clustering | Mall Customers (200 customers, real) | k=6 segments, silhouette 0.427, actionable profiles |
 
 ## Design principles
 
