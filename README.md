@@ -21,6 +21,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Customer segmentation](customer-segmentation/) | Clustering | Mall Customers (200 customers, real) | k=6 segments, silhouette 0.427, actionable profiles |
 | [Student outcomes analysis](student-outcomes-analysis/) | SQL + causal-flavored efficacy analysis | Students Performance (1,000 students) | Test-prep effect +5.5 to +10.1 points (permutation p<0.001, bootstrap CIs), SQL pipeline, from-scratch gradient boosting |
 | [Language model from scratch](language-model-from-scratch/) | Character-level language modeling | tiny-shakespeare (public domain) | Neural LM beats smoothed n-grams on held-out perplexity; embeddings, backprop, temperature/top-k sampling from scratch |
+| [Data-quality verification](data-quality-verification/) | Automated QC with human-in-the-loop routing | 4,700 marketplace records, 10 injected failure modes | **99.3% defect recall, 0.13% leakage** at 8.5% review load — rules + robust statistics + MinHash dedup + LM perplexity filtering |
 
 ## Design principles
 
