@@ -22,12 +22,16 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Student outcomes analysis](student-outcomes-analysis/) | SQL + causal-flavored efficacy analysis | Students Performance (1,000 students) | Test-prep effect +5.5 to +10.1 points (permutation p<0.001, bootstrap CIs), SQL pipeline, from-scratch gradient boosting |
 | [Language model from scratch](language-model-from-scratch/) | Character-level language modeling | tiny-shakespeare (public domain) | Neural LM beats smoothed n-grams on held-out perplexity; embeddings, backprop, temperature/top-k sampling from scratch |
 | [Data-quality verification](data-quality-verification/) | Automated QC with human-in-the-loop routing | 4,700 marketplace records, 10 injected failure modes | **99.3% defect recall, 0.13% leakage** at 8.5% review load — rules + robust statistics + MinHash dedup + LM perplexity filtering |
+| [Model serving API](model-serving-api/) | REST API for real-time inference | Pima Indians Diabetes (768 patients, real) | FastAPI service (validation, `/predict`, automated tests, Dockerfile) wrapping the from-scratch logistic regression at holdout AUC **0.836** |
 
 ## Design principles
 
 - **No ML libraries.** Only NumPy, pandas (data handling) and Matplotlib
   (plots). Everything else — models, metrics, cross-validation,
-  standardization — is implemented in the repo.
+  standardization — is implemented in the repo. (FastAPI in
+  [`model-serving-api`](model-serving-api/) is the one exception, and it's
+  a serving/HTTP framework, not a modeling shortcut — the model behind
+  its `/predict` endpoint is the same from-scratch NumPy code.)
 - **Leakage-safe evaluation.** Imputation and scaling are always fit on
   training folds only. Every headline number is computed on data the
   model never saw.

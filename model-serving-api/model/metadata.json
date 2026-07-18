@@ -1,0 +1,14 @@
+{
+  "features": [
+    "Pregnancies",
+    "Glucose",
+    "BloodPressure",
+    "SkinThickness",
+    "Insulin",
+    "BMI",
+    "DiabetesPedigreeFunction",
+    "Age"
+  ],
+  "holdout_auc": 0.8361,
+  "n_train_full": 768
+}

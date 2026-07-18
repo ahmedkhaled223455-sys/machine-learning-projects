@@ -28,6 +28,9 @@ jobs:
       - name: Lint (pyflakes rules -- catches real bugs, not style nits)
         run: ruff check . --select F,E9
 
+      - name: Train fixtures needed by tests (model-serving-api)
+        run: python model-serving-api/src/train_model.py
+
       - name: Run unit tests
         run: pytest -v
 
@@ -57,6 +60,10 @@ jobs:
               python src/run_sql_analysis.py
               python src/efficacy_analysis.py
               python src/predict_scores.py
+          - project: model-serving-api
+            run: |
+              python src/train_model.py
+              python -m pytest tests/ -v
     steps:
       - uses: actions/checkout@v4
 
