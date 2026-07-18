@@ -118,6 +118,17 @@ python pyspark/spark_analysis.py          # writes results/pyspark_results.md
 Output should match [`results/sql_results.md`](results/sql_results.md)
 row for row.
 
+## Tableau dashboard
+
+A fourth take on the same question, this time as an interactive BI
+dashboard rather than a script: score distributions and the at-risk
+share by test-prep status, plus the prep-completion selection check by
+parental education, with cross-filters. Unlike the SQL/Spark ports,
+Tableau dashboards aren't something you can generate from a terminal —
+[`tableau/README.md`](tableau/README.md) is a build guide (data file
+included) for Tableau Public's free browser editor, ~20 minutes,
+no install. *(Link to the published dashboard goes here once built.)*
+
 ## Limitations / next steps
 
 - No randomization → association, not causation; a stepped-wedge or
