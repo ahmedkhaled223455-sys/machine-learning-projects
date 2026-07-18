@@ -50,7 +50,6 @@ def healthy_window(rng) -> np.ndarray:
 
 def add_bearing_fault(x, severity: float, rng) -> np.ndarray:
     """Superimpose an impulse train whose energy scales with severity."""
-    t = np.arange(N) / FS
     speed = SHAFT_HZ * (1 + rng.normal(0, 0.01))
     f_fault = FAULT_RATIO * speed
     period = 1.0 / f_fault
