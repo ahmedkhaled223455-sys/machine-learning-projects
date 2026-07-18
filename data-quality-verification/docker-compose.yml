@@ -1,0 +1,6 @@
+services:
+  data-quality:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results

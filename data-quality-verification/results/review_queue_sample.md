@@ -15,16 +15,6 @@
 - truth: ['exact_duplicate']
 - description: `This rechargeable chair provides a two-year warranty and quiet operation. The ergonomic design offers a machine-washable`
 
-## R00023
-- reasons: near_duplicate (soft: jaccard 0.84 vs R04457)
-- truth: clean
-- description: `This lightweight kettle comes with fast shipping and a reinforced frame. The classic design offers a two-year warranty.`
-
-## R00027
-- reasons: near_duplicate (soft: jaccard 0.81 vs R02295)
-- truth: clean
-- description: `This rechargeable drill includes an extended battery and a two-year warranty. The modern design features an ergonomic gr`
-
 ## R00029
 - reasons: near_duplicate (soft: jaccard 0.89 vs R03421)
 - truth: clean
@@ -39,3 +29,13 @@
 - reasons: near_duplicate (soft: jaccard 1.00 vs R02057)
 - truth: ['exact_duplicate']
 - description: `This modern desk provides an extended battery and a reinforced frame. The lightweight design includes a compact folding `
+
+## R00049
+- reasons: near_duplicate (soft: jaccard 0.85 vs R01084)
+- truth: clean
+- description: `This foldable kettle includes a two-year warranty and an extended battery. The foldable design offers tool-free assembly`
+
+## R00051
+- reasons: near_duplicate (soft: jaccard 0.85 vs R03928)
+- truth: clean
+- description: `This heavy-duty kettle features a compact folding design and a reinforced frame. The modern design comes with fast shipp`

@@ -86,3 +86,22 @@ actually see: each record with its flags, reasons, and scores.
 python src/generate_dataset.py   # build corpus + ground truth
 python src/run_pipeline.py       # verify, route, evaluate (~3 s)
 ```
+
+## Operations: Docker, Airflow, MLflow
+
+The pipeline is packaged for scheduled, tracked execution:
+
+- **Docker** — `docker compose up --build` runs the full pipeline in a
+  container, with `data/` and `results/` volume-mounted to the host.
+- **Airflow** — [`airflow/dags/data_quality_dag.py`](airflow/dags/data_quality_dag.py)
+  orchestrates it as a daily two-task DAG
+  (`generate_dataset >> run_verification`); setup instructions for the
+  official Airflow docker-compose quickstart are in the DAG docstring.
+- **MLflow** — if `mlflow` is installed, every pipeline run logs its
+  thresholds, headline metrics (precision/recall/leakage/review load),
+  and all artifacts to the `data-quality-verification` experiment;
+  compare runs with `mlflow ui`. Without mlflow installed the pipeline
+  runs identically and simply skips tracking.
+
+A Snowflake port of the companion SQL analysis lives in
+[`student-outcomes-analysis/sql/snowflake_queries.sql`](../student-outcomes-analysis/sql/snowflake_queries.sql).

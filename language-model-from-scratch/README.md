@@ -51,7 +51,7 @@ Also visible in the training curve: validation perplexity plateaus
 while training loss keeps falling — mild overfitting, the cue for
 early stopping.
 
-After running, paste your printed `PERPLEXITY_TABLE` numbers here:
+Measured on tiny-shakespeare (200K characters, 90/10 split):
 
 | Model | Val perplexity |
 |---|---|

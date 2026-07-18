@@ -1,20 +1,20 @@
 {
   "routing": {
-    "auto_accept": 3727,
-    "review": 401,
+    "auto_accept": 3736,
+    "review": 392,
     "auto_reject": 572
   },
-  "precision_flagged": 0.7143,
-  "recall_flagged": 0.9929,
-  "leakage_into_accept": 0.0013,
-  "review_load": 0.0853,
+  "precision_flagged": 0.7189,
+  "recall_flagged": 0.99,
+  "leakage_into_accept": 0.0019,
+  "review_load": 0.0834,
   "recall_by_mode": {
     "category_typo": 1.0,
     "encoding_artifact": 1.0,
     "exact_duplicate": 1.0,
     "gibberish_text": 1.0,
     "missing_field": 1.0,
-    "near_duplicate": 0.94,
+    "near_duplicate": 0.91,
     "out_of_range": 0.981,
     "repeated_boilerplate": 1.0,
     "stale_timestamp": 1.0,

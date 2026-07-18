@@ -180,6 +180,33 @@ def main():
                    "recall_by_mode": mode_recall}, f, indent=2)
     print(f"\nSaved metrics, figures, review-queue sample to {RESULTS}")
 
+    # ---- optional MLflow experiment tracking ------------------------------
+    # If mlflow is installed (pip install mlflow), each pipeline run is
+    # logged with its thresholds, headline metrics, and artifacts so runs
+    # can be compared in the MLflow UI (`mlflow ui`, http://localhost:5000).
+    try:
+        import mlflow
+    except ImportError:
+        print("mlflow not installed -- skipping experiment tracking")
+    else:
+        mlflow.set_experiment("data-quality-verification")
+        with mlflow.start_run():
+            mlflow.log_params({
+                "n_records": len(records),
+                "ppl_hard_threshold": round(ppl_hi, 2),
+                "ppl_soft_threshold": round(ppl_soft, 2),
+                "repetition_hard": 0.65,
+                "repetition_soft": 0.5,
+            })
+            mlflow.log_metrics({
+                "precision_flagged": precision,
+                "recall_flagged": recall,
+                "leakage_into_accept": leakage,
+                "review_load": review_load,
+            })
+            mlflow.log_artifacts(str(RESULTS))
+        print("logged run to MLflow experiment 'data-quality-verification'")
+
 
 if __name__ == "__main__":
     main()

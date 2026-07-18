@@ -84,6 +84,16 @@ python src/efficacy_analysis.py  # permutation tests + adjustment (~4 s)
 python src/predict_scores.py     # CV model comparison (~15 s)
 ```
 
+## Snowflake port
+
+[`sql/snowflake_queries.sql`](sql/snowflake_queries.sql) re-implements the
+SQL layer on Snowflake (warehouse/database/schema DDL, then the same
+aggregate, selection-check, and window-function queries). Loaded via
+Snowsight's data-load wizard and run on a live trial account — results
+matched [`results/sql_results.md`](results/sql_results.md) exactly,
+confirming the SQLite logic translates directly (same window-function
+semantics, `IFF` swapped in for SQLite's `CASE WHEN`).
+
 ## Limitations / next steps
 
 - No randomization → association, not causation; a stepped-wedge or

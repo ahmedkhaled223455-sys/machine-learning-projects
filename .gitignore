@@ -8,3 +8,6 @@ Thumbs.db
 .venv/
 venv/
 corpus.txt
+# MLflow local run store -- not portable, don't commit
+mlruns/
+mlflow.db
