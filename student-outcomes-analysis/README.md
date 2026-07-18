@@ -94,6 +94,30 @@ matched [`results/sql_results.md`](results/sql_results.md) exactly,
 confirming the SQLite logic translates directly (same window-function
 semantics, `IFF` swapped in for SQLite's `CASE WHEN`).
 
+## PySpark port
+
+[`pyspark/spark_analysis.py`](pyspark/spark_analysis.py) runs the same
+seven queries a third way: the PySpark DataFrame API and
+`pyspark.sql.window.Window`, on Spark's `local[*]` mode. Same data, same
+business questions — SQLite for a dev laptop, Snowflake for a cloud
+warehouse, Spark for distributed compute:
+
+- Most queries use `groupBy().agg()` with `pyspark.sql.functions`
+  (`avg`, `round`, `when`/`otherwise` for conditional aggregates).
+- One runs as a raw SQL string against a registered temp view
+  (`spark.sql(...)`) — both styles show up in real Spark codebases.
+- The top-3-per-group query — `ROW_NUMBER() OVER (PARTITION BY ...)` in
+  the SQL versions — becomes `Window.partitionBy(...).orderBy(...)` with
+  `F.row_number()`, PySpark's equivalent of the same windowing concept.
+
+```bash
+pip install -r pyspark/requirements.txt   # pulls in pyspark; needs a JVM (Java 11/17)
+python pyspark/spark_analysis.py          # writes results/pyspark_results.md
+```
+
+Output should match [`results/sql_results.md`](results/sql_results.md)
+row for row.
+
 ## Limitations / next steps
 
 - No randomization → association, not causation; a stepped-wedge or
