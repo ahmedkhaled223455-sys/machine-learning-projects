@@ -23,6 +23,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Language model from scratch](language-model-from-scratch/) | Character-level language modeling | tiny-shakespeare (public domain) | Neural LM beats smoothed n-grams on held-out perplexity; embeddings, backprop, temperature/top-k sampling from scratch |
 | [Data-quality verification](data-quality-verification/) | Automated QC with human-in-the-loop routing | 4,700 marketplace records, 10 injected failure modes | **99.3% defect recall, 0.13% leakage** at 8.5% review load — rules + robust statistics + MinHash dedup + LM perplexity filtering |
 | [Model serving API](model-serving-api/) | REST API for real-time inference | Pima Indians Diabetes (768 patients, real) | FastAPI service (validation, `/predict`, automated tests, Dockerfile) wrapping the from-scratch logistic regression at holdout AUC **0.836** |
+| [NoSQL product catalog](nosql-product-catalog/) | Document-store modeling + aggregation | Synthetic catalog (600 heterogeneous product docs, 1,555 embedded reviews) | **MongoDB** — embedded vs referenced modeling, aggregation-framework analytics (`$group`/`$unwind`/`$lookup`), multikey + compound indexes; CI runs it against a live Mongo service |
 
 ## Design principles
 

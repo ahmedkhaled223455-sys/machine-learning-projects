@@ -1,0 +1,17 @@
+# Local MongoDB for running the pipeline end-to-end:
+#   docker compose up -d
+#   pip install -r requirements.txt
+#   python src/generate_data.py
+#   MONGO_URI=mongodb://localhost:27017 python src/ingest.py
+#   MONGO_URI=mongodb://localhost:27017 python src/queries.py
+#   docker compose down            # stop (add -v to wipe data)
+services:
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
