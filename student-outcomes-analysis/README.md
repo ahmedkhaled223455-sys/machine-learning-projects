@@ -127,7 +127,12 @@ parental education, with cross-filters. Unlike the SQL/Spark ports,
 Tableau dashboards aren't something you can generate from a terminal —
 [`tableau/README.md`](tableau/README.md) is a build guide (data file
 included) for Tableau Public's free browser editor, ~20 minutes,
-no install. *(Link to the published dashboard goes here once built.)*
+no install.
+
+**Live dashboard:** [Does Test Prep Work? — Student Outcomes Dashboard](https://public.tableau.com/app/profile/ahmed.khaled5730/viz/StudentOutcomesDashboard_17844221900050/DoesTestPrepWorkStudentOutcomesDashboard)
+— four linked views (avg scores by test prep, score distribution,
+% at-risk, prep completion by parental education) with cross-filters
+on test prep, gender, and parental education.
 
 ## Limitations / next steps
 
