@@ -28,6 +28,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [LLM agent data analyst](llm-agent-data-analyst/) | AI agent (tool-use) + eval harness | Student exam scores (1,000, reused) | **Anthropic tool-use/function-calling** agent that answers NL questions via `get_schema`/`run_sql`; orchestration loop, injectable mock LLM (offline-testable), and evals scored against ground-truth baselines (**10/10** live) |
 | [RAG document QA](rag-document-qa/) | Retrieval-augmented generation | 14 technical-notes corpus | From-scratch **TF-IDF embeddings + NumPy cosine vector store**, chunking, and grounded generation with citations; retrieval **recall@1 = 100%** measured locally, generation via mock/real Claude |
 | [Marketing attribution & MMM](marketing-attribution/) | Marketing analytics + causal | Synthetic, known ground truth | **Multi-touch attribution** (Markov removal-effect), **media mix model** (adstock/saturation/ROAS, from-scratch ridge), and **causal campaign lift** (difference-in-differences); each validated by recovering injected effects (attribution MAE **0.004**, MMM R² **0.90**, lift CI covers truth) |
+| [Financial data-health monitor](financial-data-health/) | Data-correctness + anomaly monitoring | Synthetic price panel, injected defects | Feed-health checks (missing/stale/gaps) + **robust anomaly detection** (MAD z-score bad ticks, variance change-point regime breaks); **100% recall** on injected defects, regime isolated with no false alarms; Python + a base-**R** report |
 
 ## Design principles
 

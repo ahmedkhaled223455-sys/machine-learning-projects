@@ -1,0 +1,35 @@
+{
+  "missing": {
+    "injected": 10,
+    "detected": 10,
+    "recall": 1.0
+  },
+  "stale": {
+    "injected": 14,
+    "detected": 14,
+    "recall": 1.0
+  },
+  "date_gaps": {
+    "injected": 4,
+    "detected": 4,
+    "recall": 1.0
+  },
+  "outlier": {
+    "injected": 8,
+    "detected": 8,
+    "recall": 1.0,
+    "total_flags": 16
+  },
+  "regime": {
+    "true_ticker": "CDX",
+    "true_date": "2023-02-27",
+    "detected": {
+      "CDX": {
+        "date": "2023-03-14",
+        "ratio": 2.98
+      }
+    },
+    "correct_ticker": true,
+    "no_false_regimes": true
+  }
+}
