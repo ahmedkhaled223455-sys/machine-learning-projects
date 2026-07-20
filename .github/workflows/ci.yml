@@ -64,6 +64,10 @@ jobs:
             run: |
               python src/train_model.py
               python -m pytest tests/ -v
+          - project: marketing-attribution
+            run: |
+              python src/generate_data.py
+              python src/run_analysis.py
     steps:
       - uses: actions/checkout@v4
 
