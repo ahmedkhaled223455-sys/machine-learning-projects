@@ -1,0 +1,10 @@
+{"question": "How many students are in the dataset?", "expected": 1000, "tolerance": 0}
+{"question": "What is the average math score? Round to one decimal.", "expected": 66.1, "tolerance": 0.15}
+{"question": "What is the average reading score? Round to one decimal.", "expected": 69.2, "tolerance": 0.15}
+{"question": "How many students completed the test preparation course?", "expected": 358, "tolerance": 0}
+{"question": "What is the highest math score achieved by any student?", "expected": 100, "tolerance": 0}
+{"question": "How many students are female?", "expected": 518, "tolerance": 0}
+{"question": "What is the average math score among students who completed test prep? Round to one decimal.", "expected": 69.7, "tolerance": 0.15}
+{"question": "Among students who did NOT complete test prep, what percentage scored below 60 in math? Round to one decimal.", "expected": 36.8, "tolerance": 0.2}
+{"question": "How many students receive free/reduced lunch?", "expected": 355, "tolerance": 0}
+{"question": "Which parental level of education has the highest test-prep completion rate?", "expected": "some high school"}

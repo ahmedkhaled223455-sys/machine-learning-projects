@@ -25,6 +25,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Model serving API](model-serving-api/) | REST API for real-time inference | Pima Indians Diabetes (768 patients, real) | FastAPI service (validation, `/predict`, automated tests, Dockerfile) wrapping the from-scratch logistic regression at holdout AUC **0.836** |
 | [NoSQL product catalog](nosql-product-catalog/) | Document-store modeling + aggregation | Synthetic catalog (600 heterogeneous product docs, 1,555 embedded reviews) | **MongoDB** — embedded vs referenced modeling, aggregation-framework analytics (`$group`/`$unwind`/`$lookup`), multikey + compound indexes; CI runs it against a live Mongo service |
 | [AWS data pipeline](aws-data-pipeline/) | Serverless-style cloud ETL | Synthetic sales events (2,000 raw, ~5% malformed) | **S3 → Lambda-style transform → DynamoDB + curated S3** via boto3; endpoint-portable across moto/LocalStack/real AWS; CI verifies end-to-end with `moto` and a LocalStack service |
+| [LLM agent data analyst](llm-agent-data-analyst/) | AI agent (tool-use) + eval harness | Student exam scores (1,000, reused) | **Anthropic tool-use/function-calling** agent that answers NL questions via `get_schema`/`run_sql`; orchestration loop, injectable mock LLM (offline-testable), and evals scored against ground-truth baselines |
 
 ## Design principles
 
