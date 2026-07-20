@@ -164,3 +164,50 @@ jobs:
           python src/ingest.py
           python src/queries.py
           python -m pytest tests/ -v
+
+  smoke-test-localstack:
+    name: AWS pipeline integration (LocalStack)
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    continue-on-error: true  # heavier emulator; moto tests in lint-and-test are the authoritative check
+    services:
+      localstack:
+        image: localstack/localstack:3
+        ports:
+          - 4566:4566
+        env:
+          SERVICES: s3,dynamodb
+    env:
+      AWS_ENDPOINT_URL: http://localhost:4566
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_DEFAULT_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r aws-data-pipeline/requirements.txt
+
+      - name: Wait for LocalStack to be ready
+        run: |
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:4566/_localstack/health >/dev/null; then
+              echo "localstack ready"; exit 0
+            fi
+            sleep 2
+          done
+          echo "localstack did not become ready"; exit 1
+
+      - name: Run pipeline end-to-end against LocalStack
+        working-directory: aws-data-pipeline
+        run: |
+          python src/generate_events.py
+          python src/setup_resources.py
+          python src/load_raw.py
+          python src/pipeline.py
