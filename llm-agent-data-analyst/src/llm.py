@@ -55,7 +55,7 @@ class AnthropicLLM:
         import anthropic  # lazy: only needed on the real path
         self._client = anthropic.Anthropic()
         # Override with any current model via ANTHROPIC_MODEL.
-        self._model = model or os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-5")
+        self._model = model or os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5")
         self._max_tokens = max_tokens
 
     def create(self, system: str, messages: list[dict], tools: list[dict]):
