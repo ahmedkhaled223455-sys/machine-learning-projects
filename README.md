@@ -25,16 +25,18 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Model serving API](model-serving-api/) | REST API for real-time inference | Pima Indians Diabetes (768 patients, real) | FastAPI service (validation, `/predict`, automated tests, Dockerfile) wrapping the from-scratch logistic regression at holdout AUC **0.836** |
 | [NoSQL product catalog](nosql-product-catalog/) | Document-store modeling + aggregation | Synthetic catalog (600 heterogeneous product docs, 1,555 embedded reviews) | **MongoDB** — embedded vs referenced modeling, aggregation-framework analytics (`$group`/`$unwind`/`$lookup`), multikey + compound indexes; CI runs it against a live Mongo service |
 | [AWS data pipeline](aws-data-pipeline/) | Serverless-style cloud ETL | Synthetic sales events (2,000 raw, ~5% malformed) | **S3 → Lambda-style transform → DynamoDB + curated S3** via boto3; endpoint-portable across moto/LocalStack/real AWS; CI verifies end-to-end with `moto` and a LocalStack service |
-| [LLM agent data analyst](llm-agent-data-analyst/) | AI agent (tool-use) + eval harness | Student exam scores (1,000, reused) | **Anthropic tool-use/function-calling** agent that answers NL questions via `get_schema`/`run_sql`; orchestration loop, injectable mock LLM (offline-testable), and evals scored against ground-truth baselines |
+| [LLM agent data analyst](llm-agent-data-analyst/) | AI agent (tool-use) + eval harness | Student exam scores (1,000, reused) | **Anthropic tool-use/function-calling** agent that answers NL questions via `get_schema`/`run_sql`; orchestration loop, injectable mock LLM (offline-testable), and evals scored against ground-truth baselines (**10/10** live) |
+| [RAG document QA](rag-document-qa/) | Retrieval-augmented generation | 14 technical-notes corpus | From-scratch **TF-IDF embeddings + NumPy cosine vector store**, chunking, and grounded generation with citations; retrieval **recall@1 = 100%** measured locally, generation via mock/real Claude |
 
 ## Design principles
 
-- **No ML libraries.** Only NumPy, pandas (data handling) and Matplotlib
-  (plots). Everything else — models, metrics, cross-validation,
-  standardization — is implemented in the repo. (FastAPI in
-  [`model-serving-api`](model-serving-api/) is the one exception, and it's
-  a serving/HTTP framework, not a modeling shortcut — the model behind
-  its `/predict` endpoint is the same from-scratch NumPy code.)
+- **Core ML from scratch.** The modeling projects use only NumPy, pandas
+  (data handling) and Matplotlib (plots) — models, metrics,
+  cross-validation, and even TF-IDF embeddings are implemented in the
+  repo. The data-engineering and AI-tooling projects use the appropriate
+  SDKs as *infrastructure*, not modeling shortcuts (FastAPI to serve,
+  boto3/pymongo for cloud/NoSQL, the Anthropic SDK for LLM calls) — the
+  logic around them is still the point.
 - **Leakage-safe evaluation.** Imputation and scaling are always fit on
   training folds only. Every headline number is computed on data the
   model never saw.

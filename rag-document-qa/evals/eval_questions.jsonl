@@ -1,0 +1,12 @@
+{"question": "How does MinHash detect near-duplicate documents?", "gold_doc": "minhash", "answer_contains": ["jaccard"]}
+{"question": "What problem do vector databases solve?", "gold_doc": "vector-databases", "answer_contains": ["nearest"]}
+{"question": "Why can gradient boosting overfit on small datasets?", "gold_doc": "gradient-boosting", "answer_contains": ["noise"]}
+{"question": "What does inverse document frequency do to common words?", "gold_doc": "tfidf", "answer_contains": ["down"]}
+{"question": "How does k-means assign points to clusters?", "gold_doc": "kmeans", "answer_contains": ["centroid"]}
+{"question": "Why should preprocessing be fit inside each cross-validation fold?", "gold_doc": "cross-validation", "answer_contains": ["leak"]}
+{"question": "What does PCA do to correlated features?", "gold_doc": "pca", "answer_contains": ["variance"]}
+{"question": "How does the attention mechanism weigh input tokens?", "gold_doc": "transformers-attention", "answer_contains": ["key"]}
+{"question": "What does a lower perplexity indicate about a language model?", "gold_doc": "perplexity", "answer_contains": ["surpris"]}
+{"question": "Why is Airflow useful for scheduled data pipelines?", "gold_doc": "airflow", "answer_contains": ["dag"]}
+{"question": "How does Snowflake separate storage from compute?", "gold_doc": "snowflake", "answer_contains": ["compute"]}
+{"question": "What problem do Docker containers solve for reproducibility?", "gold_doc": "docker", "answer_contains": ["machine"]}
