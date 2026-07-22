@@ -29,6 +29,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [RAG document QA](rag-document-qa/) | Retrieval-augmented generation | 14 technical-notes corpus | From-scratch **TF-IDF embeddings + NumPy cosine vector store**, chunking, and grounded generation with citations; retrieval **recall@1 = 100%** measured locally, generation via mock/real Claude |
 | [Marketing attribution & MMM](marketing-attribution/) | Marketing analytics + causal | Synthetic, known ground truth | **Multi-touch attribution** (Markov removal-effect), **media mix model** (adstock/saturation/ROAS, from-scratch ridge), and **causal campaign lift** (difference-in-differences); each validated by recovering injected effects (attribution MAE **0.004**, MMM R² **0.90**, lift CI covers truth) |
 | [Financial data-health monitor](financial-data-health/) | Data-correctness + anomaly monitoring | Synthetic price panel, injected defects | Feed-health checks (missing/stale/gaps) + **robust anomaly detection** (MAD z-score bad ticks, variance change-point regime breaks); **100% recall** on injected defects, regime isolated with no false alarms; Python + a base-**R** report |
+| [Rail network optimizer](rail-network-optimizer/) | Graph algorithms / network optimization | Synthetic rail network (22 stations, 30 segments) | **Java** (no dependencies): Dijkstra shortest path with distance-vs-time metrics and **disruption rerouting**; surfaces where the shortest route isn't the fastest; 23 assertion-based tests |
 
 ## Design principles
 

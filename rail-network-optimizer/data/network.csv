@@ -1,0 +1,31 @@
+from,to,miles,hours
+Seattle,Spokane,280,7.0
+Spokane,Billings,470,11.5
+Billings,Denver,550,13.0
+Denver,Kansas City,600,14.0
+Kansas City,Chicago,510,12.0
+Seattle,Portland,175,4.5
+Portland,Boise,430,10.5
+Boise,Salt Lake City,340,8.5
+Salt Lake City,Denver,520,12.5
+Salt Lake City,Las Vegas,420,10.0
+Las Vegas,Los Angeles,270,9.0
+Los Angeles,Phoenix,375,9.0
+Phoenix,Albuquerque,420,10.5
+Albuquerque,Amarillo,290,7.0
+Amarillo,Oklahoma City,260,6.0
+Oklahoma City,Kansas City,350,8.0
+Denver,Amarillo,430,10.0
+Los Angeles,Barstow,120,3.0
+Barstow,Las Vegas,155,4.0
+Barstow,Phoenix,330,8.0
+Fort Worth,Oklahoma City,205,5.0
+Fort Worth,Houston,265,6.5
+Houston,New Orleans,350,8.5
+Fort Worth,Amarillo,345,8.5
+Kansas City,St Louis,250,6.0
+St Louis,Memphis,285,7.0
+Memphis,New Orleans,395,9.5
+Chicago,St Louis,300,7.5
+Minneapolis,Chicago,410,10.0
+Billings,Minneapolis,700,16.5
