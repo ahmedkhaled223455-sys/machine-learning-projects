@@ -37,16 +37,21 @@ question an operations team asks when a segment goes down:
 ```
 $ java -cp out RouteOptimizer Seattle Chicago
 Shortest by distance:
-  Seattle -> Spokane -> Billings -> Minneapolis -> Chicago  [1860 mi, 45.0 h]
+  Seattle -> Spokane -> Billings -> Minneapolis -> Chicago  [2010 mi, 48.5 h]
 
 Disruption: segment Seattle <-> Spokane closed
   Detour: Seattle -> Portland -> Boise -> Salt Lake City -> Denver -> Kansas City -> Chicago  [2575 mi, 62.0 h]
-  Added distance: 715 mi (+38.4%)
+  Added distance: 565 mi (+28.1%)
 ```
 
-Losing one segment costs 715 miles here — the kind of number that justifies
+Losing one segment costs 565 miles here — the kind of number that justifies
 redundancy on a corridor. `Graph.copy()` makes the scenario
 non-destructive, so the base network is never mutated.
+
+> Segment mileages in `data/network.csv` are validated against great-circle
+> distance by the companion [geo-rail-analysis](../geo-rail-analysis/)
+> project — which caught one segment tabulated *shorter* than a straight
+> line and led to the correction now in this data.
 
 ## Design
 
