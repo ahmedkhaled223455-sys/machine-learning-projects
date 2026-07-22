@@ -31,6 +31,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Financial data-health monitor](financial-data-health/) | Data-correctness + anomaly monitoring | Synthetic price panel, injected defects | Feed-health checks (missing/stale/gaps) + **robust anomaly detection** (MAD z-score bad ticks, variance change-point regime breaks); **100% recall** on injected defects, regime isolated with no false alarms; Python + a base-**R** report |
 | [Rail network optimizer](rail-network-optimizer/) | Graph algorithms / network optimization | Synthetic rail network (22 stations, 30 segments) | **Java** (no dependencies): Dijkstra shortest path with distance-vs-time metrics and **disruption rerouting**; surfaces where the shortest route isn't the fastest; 23 assertion-based tests |
 | [Geospatial rail analysis](geo-rail-analysis/) | Geospatial analysis / data validation | Real coordinates for 22 stations | From-scratch **haversine geodesy** (validated against published distances) + **GeoPandas/Shapely** (CRS reprojection, corridor buffers, nearest-terminal search); its circuity check **caught a segment tabulated shorter than a straight line** |
+| [NCAA transfer portal analytics](ncaa-transfer-portal/) | Sports analytics / player valuation | Simulated player-seasons with latent talent | Pace-, role-, and schedule-adjusted efficiency vs raw scoring; projecting transfers into a new program improves RMSE **14.6% for transfers and 0% for stayers** — the signature a correct context adjustment should have; pandas + **polars** |
 
 ## Design principles
 

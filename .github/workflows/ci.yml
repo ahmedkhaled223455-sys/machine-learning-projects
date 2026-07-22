@@ -72,6 +72,12 @@ jobs:
             run: |
               python src/generate_prices.py
               python src/monitor.py
+          - project: ncaa-transfer-portal
+            run: |
+              python src/generate_data.py
+              python src/run_analysis.py
+              python src/polars_pipeline.py
+              python -m pytest tests/ -v
     steps:
       - uses: actions/checkout@v4
 
