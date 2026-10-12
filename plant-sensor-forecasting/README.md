@@ -60,32 +60,50 @@ Shared design of the PyTorch models (`src/quantile_models.py`):
 
 ## Results
 
-Classical baselines (from `python src/backtest.py` without torch; MAE and
-pinball in metres, 90% interval should cover ~0.90):
+From the CI run (*Train + backtest + promotion gate*). Pinball loss and MAE
+in metres (lower is better); a calibrated 90% interval covers ~0.90.
 
-| model | scenario | MAE | pinball | 90% coverage |
+| model | in-regime pinball | regime-shift pinball | regime-shift 90% coverage | faulty sensor (cleaned) pinball |
 |---|---|---|---|---|
-| ARX | in_dist | 0.074 | 0.023 | 0.907 |
-| ARX | **regime_shift** | 0.212 | 0.078 | **0.428** |
-| physics | regime_shift | 0.150 | 0.048 | 0.768 |
-| ARX | faults_naive | 0.116 | 0.042 | 0.819 |
-| ARX | faults_cleaned | 0.087 | 0.029 | 0.864 |
+| persistence | 0.0358 | 0.0400 | 0.887 | 0.0421 |
+| Holt | 0.0441 | 0.0466 | 0.920 | 0.0496 |
+| ARX (best classical) | 0.0231 | 0.0781 | **0.428** | 0.0287 |
+| physics only | 0.0335 | 0.0482 | 0.768 | 0.0350 |
+| pure net | 0.0230 | 0.0344 | 0.890 | 0.0274 |
+| pure ensemble | 0.0225 | 0.0357 | 0.900 | 0.0268 |
+| hybrid net | 0.0228 | 0.0321 | 0.897 | 0.0270 |
+| **hybrid ensemble** | **0.0226** | **0.0316** | **0.902** | **0.0266** |
 
-What the baselines already show:
+Full table (MAE, interval width, infeasibility, faults with and without
+cleaning): `results/backtest.md`, produced by `python src/backtest.py`.
 
-* **The best in-distribution model is the worst out of it.** ARX is the
-  strongest baseline in regime, then its 90% interval covers only 43% of
-  outcomes once the plant leaves the training range — confidently wrong.
-* **The robust input layer cuts the fault damage by about a third**
-  (ARX pinball 0.042 → 0.029 on the same faulty sensor).
-* **Drift is caught by monitoring, not by cleaning.** On clean data the
-  rolling-coverage monitor never fires; with a drifting level sensor it
-  fires at forecast 1,600 as rolling 90% coverage collapses to 10%.
+What it shows -- including where the fancy models *don't* win:
 
-The PyTorch pure/hybrid single models and ensembles are trained and scored
-in CI (job *Train + backtest + promotion gate*); the full table, per-horizon
-errors, monitor log, promotion decision, and a regime-shift fan chart are
-written to `results/` and uploaded as the `forecasting-results` artifact.
+* **In regime, nothing beats a good linear model by much.** The networks
+  edge ARX by only ~2--3% on pinball; most of the remaining error is the
+  unmeasured disturbance, which no model can see. Reported as is.
+* **Out of regime is where it matters.** ARX's 90% interval covers only 43%
+  of outcomes once the plant leaves the training range -- confidently
+  wrong. The hybrid ensemble keeps coverage at 0.90 with **60% lower pinball
+  than ARX** and 34% lower than physics alone, and beats the pure network
+  (0.0316 vs 0.0344): learning *corrections to physics* extrapolates better
+  than learning the dynamics from scratch.
+* **The ensemble adds little here.** It slightly helps the hybrid and
+  slightly hurts the pure model under shift -- recalibration, not member
+  disagreement, does most of the work on this problem.
+* **Cleaning the inputs matters more than the model.** On the same faulty
+  sensor, the robust input layer cuts the hybrid ensemble's pinball from
+  0.0351 to 0.0266 (−24%). Coverage under faults is still 0.85, below the
+  nominal 0.90 -- a known gap.
+* **Drift is caught by monitoring.** On clean data the rolling-coverage
+  monitor never fires (minimum 0.82); with a drifting level sensor it fires
+  at forecast 1,600 as coverage collapses to 0.11.
+* **The gate promoted the hybrid ensemble over ARX** -- better pinball on the
+  gated scenarios with coverage inside tolerance -- and the registry keeps
+  ARX as the rollback target.
+
+Training: 5-member ensembles of each family train in ~10 s each on a CI CPU
+(early stopping after 12--18 epochs); the full pipeline runs in ~30 s.
 
 ## Production pieces
 
