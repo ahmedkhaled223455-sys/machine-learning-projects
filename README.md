@@ -32,6 +32,7 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
 | [Rail network optimizer](rail-network-optimizer/) | Graph algorithms / network optimization | Synthetic rail network (22 stations, 30 segments) | **Java** (no dependencies): Dijkstra shortest path with distance-vs-time metrics and **disruption rerouting**; surfaces where the shortest route isn't the fastest; 23 assertion-based tests |
 | [Geospatial rail analysis](geo-rail-analysis/) | Geospatial analysis / data validation | Real coordinates for 22 stations | From-scratch **haversine geodesy** (validated against published distances) + **GeoPandas/Shapely** (CRS reprojection, corridor buffers, nearest-terminal search); its circuity check **caught a segment tabulated shorter than a straight line** |
 | [NCAA transfer portal analytics](ncaa-transfer-portal/) | Sports analytics / player valuation | Simulated player-seasons with latent talent | Pace-, role-, and schedule-adjusted efficiency vs raw scoring; projecting transfers into a new program improves RMSE **14.6% for transfers and 0% for stayers** — the signature a correct context adjustment should have; pandas + **polars** |
+| [Plant sensor forecasting](plant-sensor-forecasting/) | Probabilistic time-series forecasting | Simulated process unit (mass balance, unmeasured disturbance, injected sensor faults) | **PyTorch** quantile networks: pure vs **physics-hybrid**, **deep ensemble** + calibration, robust sensor-fault input layer; backtested vs ARX/Holt/physics across in-regime, **regime-shift**, and faulty-sensor scenarios; drift-triggered retraining monitor, champion/challenger gate with rollback, Docker |
 
 ## Design principles
 
@@ -40,7 +41,8 @@ backprop is checked against numerical gradients to ~1e-8 relative error).
   cross-validation, and even TF-IDF embeddings are implemented in the
   repo. The data-engineering and AI-tooling projects use the appropriate
   SDKs as *infrastructure*, not modeling shortcuts (FastAPI to serve,
-  boto3/pymongo for cloud/NoSQL, the Anthropic SDK for LLM calls) — the
+  boto3/pymongo for cloud/NoSQL, the Anthropic SDK for LLM calls,
+  PyTorch for the deep probabilistic forecasters) — the
   logic around them is still the point.
 - **Leakage-safe evaluation.** Imputation and scaling are always fit on
   training folds only. Every headline number is computed on data the
