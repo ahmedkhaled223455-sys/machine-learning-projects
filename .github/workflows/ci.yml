@@ -78,6 +78,10 @@ jobs:
               python src/run_analysis.py
               python src/polars_pipeline.py
               python -m pytest tests/ -v
+          - project: injection-geomechanics
+            run: |
+              python -m pytest tests/ -v
+              python src/run_study.py
     steps:
       - uses: actions/checkout@v4
 

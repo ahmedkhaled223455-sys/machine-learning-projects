@@ -1,0 +1,104 @@
+{
+  "verification": {
+    "terzaghi_max_error_by_grid": [
+      0.0010901835828152073,
+      0.0002708438267207125,
+      6.760358792679e-05,
+      1.689417227235257e-05
+    ],
+    "terzaghi_observed_order": [
+      2.0090379865894494,
+      2.002289486337452,
+      2.000574149138649
+    ],
+    "theis_convergence": [
+      {
+        "cells": 60,
+        "steps": 75,
+        "max_rel_error_vs_theis": 0.008080695950123618
+      },
+      {
+        "cells": 120,
+        "steps": 150,
+        "max_rel_error_vs_theis": 0.005022231375143571
+      },
+      {
+        "cells": 240,
+        "steps": 300,
+        "max_rel_error_vs_theis": 0.0009744535591376113
+      },
+      {
+        "cells": 480,
+        "steps": 600,
+        "max_rel_error_vs_theis": 0.00016961827094075232
+      }
+    ]
+  },
+  "coupling": {
+    "n_faults": 4000,
+    "already_critical_pct": 4.375,
+    "median_critical_dp_MPa_uncoupled": 11.907854511574444,
+    "median_critical_dp_MPa_coupled": 30.674463437736637,
+    "median_ratio_coupled_over_uncoupled": 2.6316122529379715,
+    "fault_governs_pct": 38.025
+  },
+  "simulation_seconds": 16.26611006100029,
+  "surrogates": {
+    "test_in_range": {
+      "black_box_ridge": {
+        "rmse_log10": 0.048622061568967666,
+        "median_abs_pct_error": 5.302767779740675,
+        "unsafe_overprediction_pct": 9.07473309608541
+      },
+      "physics_only": {
+        "rmse_log10": 0.001217622500147109,
+        "median_abs_pct_error": 0.21482791789753652,
+        "unsafe_overprediction_pct": 0.0
+      },
+      "physics_hybrid": {
+        "rmse_log10": 0.0006680234021966457,
+        "median_abs_pct_error": 0.09085197568380332,
+        "unsafe_overprediction_pct": 0.0
+      }
+    },
+    "test_out_of_range_k": {
+      "black_box_ridge": {
+        "rmse_log10": 0.12470263774729812,
+        "median_abs_pct_error": 8.771501797978404,
+        "unsafe_overprediction_pct": 25.71428571428571
+      },
+      "physics_only": {
+        "rmse_log10": 0.0010267987054739937,
+        "median_abs_pct_error": 0.14717168072271303,
+        "unsafe_overprediction_pct": 0.0
+      },
+      "physics_hybrid": {
+        "rmse_log10": 0.0004986459629302428,
+        "median_abs_pct_error": 0.07144454026398739,
+        "unsafe_overprediction_pct": 0.0
+      }
+    }
+  },
+  "samples": {
+    "train": 1916,
+    "test": 562,
+    "ood": 560
+  },
+  "rom": {
+    "n_modes": 8,
+    "energy_captured": 0.9999173316518244,
+    "projection_median_rel_error_pct": 0.14566896121224193,
+    "prediction_median_rel_error_pct": 0.19969418646427206,
+    "prediction_p95_rel_error_pct": 1.1450527807404836,
+    "seconds_per_profile_rom": 0.00011503794661899565
+  },
+  "monte_carlo": {
+    "n_realisations": 2000,
+    "already_critical_pct": 0.05,
+    "rate_at_5pct_risk_m3_per_day_simulator": 843.6555361922344,
+    "rate_at_5pct_risk_m3_per_day_hybrid": 841.60032058375,
+    "seconds_simulator": 11.282471747999807,
+    "seconds_surrogate": 0.002466959999765095,
+    "speedup": 4573.4311659184295
+  }
+}
