@@ -82,6 +82,10 @@ jobs:
             run: |
               python -m pytest tests/ -v
               python src/run_study.py
+          - project: bearing-fault-diagnostics
+            run: |
+              python -m pytest tests/ -v
+              python src/run_study.py
     steps:
       - uses: actions/checkout@v4
 
