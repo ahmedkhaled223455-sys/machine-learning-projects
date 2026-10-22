@@ -80,7 +80,50 @@ in `results/results.md`, raw numbers in `results/metrics.json`, example
 predictions in `results/examples.png`.
 
 <!-- RESULTS -->
-_Results are written by the CI run and copied here._
+CI run on CPU (24,000 training samples, 4,800 test, 6,240 dense-traffic;
+~17 min per transformer, 286k parameters). Errors in metres; MR = miss
+rate (final-position error > 2 m).
+
+**Test set, all samples**
+
+| model | minADE@6 | minFDE@6 | MR@6 | ADE@1 | FDE@1 | MR@1 |
+|---|---|---|---|---|---|---|
+| constant velocity | — | — | — | 1.181 | 2.674 | 0.486 |
+| constant acceleration | — | — | — | 2.780 | 7.108 | 0.935 |
+| ridge regression | — | — | — | 0.865 | 2.060 | 0.346 |
+| transformer, K = 6 | **0.442** | **0.853** | **0.099** | 1.033 | 2.393 | 0.439 |
+| transformer, K = 6, no social attention | 0.443 | 0.865 | 0.100 | 1.038 | 2.403 | 0.423 |
+| transformer, K = 1 | 0.853 | 2.000 | 0.329 | 0.853 | 2.000 | 0.329 |
+
+**Lane-change samples (18% of test):** transformer K = 6 minFDE@6 1.78 m,
+MR@6 0.39, vs. ridge FDE 3.04 m, MR 0.61.
+
+**Dense traffic (never seen in training):** transformer K = 6 minFDE@6
+0.76 m, MR@6 0.06; no degradation (slower traffic is easier).
+
+### What the results say — including what did not work
+
+- **Multimodality is the big win.** Six candidate futures cut the miss rate
+  from 34.6% (best single-path baseline, ridge) to **9.9%** and the
+  final-position error from 2.06 m to **0.85 m**.
+- **The confidence head is weak.** The single most-confident mode (ADE/FDE@1)
+  is *worse* than ridge (FDE 2.39 vs 2.06 m). Winner-takes-all training
+  spread the modes, but the scores do not reliably pick the right one; the
+  single-mode transformer (K = 1) only matches ridge (2.00 vs 2.06 m).
+- **Social attention adds almost nothing here** (minFDE 0.853 vs 0.865 m).
+  In this simulator lane-change timing is mostly random rather than a
+  reaction to neighbours, so there is little interaction to learn — a
+  property of the data, not evidence that interaction never matters.
+- **Partial mode collapse on lane changes** (see `results/examples.png`):
+  the six modes mostly differ in speed, not in manoeuvre. Before a lane
+  change starts, all modes go straight; during one, modes overshoot the
+  target lane because the model has no lane/map input.
+
+Next steps these point to: a lane-graph or map encoding, explicit manoeuvre
+(intent) modes or anchors, and calibrating the confidence head (e.g. a
+separate classification loss weight sweep or temperature scaling).
+
+![examples](results/examples.png)
 <!-- /RESULTS -->
 
 ## Run it
